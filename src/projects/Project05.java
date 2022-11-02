@@ -82,19 +82,27 @@ public class Project05 {
 
     public static void findGreatestAndSmallestWithoutSort (int [] numbers2) {
 
-        int min = Integer.MAX_VALUE;
-        int max = Integer.MIN_VALUE;
+     int firstSmallest = numbers2[0];
+     int firstGreatest = numbers2[0];
 
-        for (int e : numbers2) {
-            if (min > e) min = e;
-            if (max < e) max = e;
+     for (int i = 0; i < numbers2.length; i++){
 
-        }if(numbers2.length > 0){
-            System.out.println("Second Smallest = " + min);
-            System.out.println("Second Greatest = " + max);
+         if (numbers2[i] > firstGreatest) firstGreatest = numbers2[i];
+         if (numbers2[i] > firstSmallest) firstSmallest = numbers2[i];
+        }
+        int secondSmallest = Integer.MAX_VALUE;
+        int secondGreatest = Integer.MIN_VALUE;
+        for(int i = 0; i < numbers2.length; i++){
+            if(numbers2[i] != firstSmallest && numbers2[i] < secondSmallest) secondSmallest = numbers2[i];
+            if(numbers2[i] != firstGreatest && numbers2[i] > firstGreatest) firstGreatest = numbers2[i];
         }
 
+        System.out.println("Second Smallest = " + secondSmallest);
+        System.out.println("Second Greatest = " + secondGreatest);
     }
+
+        // Task 5
+
 }
 
 

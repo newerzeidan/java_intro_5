@@ -138,7 +138,81 @@ public class Homework07 {
 
         System.out.println("\n------Task-8------\n");
 
-        String [] object = {"Desk", "Laptop", "Mouse", "Mouse-Pad", "Adapter"};
-        ArrayList<String> objects = new ArrayList<>(Arrays.asList(object));
-        System.out.println(object);
+        ArrayList<String> objects = new ArrayList<>(Arrays.asList());
+
+        objects.add("Desk");
+        objects.add("Laptop");
+        objects.add("Mouse");
+        objects.add("Monitor");
+        objects.add("Mouse-Pad");
+        objects.add("Adaptor");
+
+        System.out.println(objects);
+
+        Collections.sort(objects);
+
+        System.out.println(objects);
+
+        int countMm = 0;
+        int missingAeE = 0;
+
+        for (String object : objects) {
+            if(object.toLowerCase().startsWith("m"))countMm++;
+            if(!object.toLowerCase().contains("a") && ! object.toLowerCase(). contains ("e")) missingAeE++;
+        }
+        System.out.println(countMm);
+        System.out.println(missingAeE);
+
+
+        System.out.println("\n------Task-9------\n");
+
+        String [] kitchenObjects = {"Plate", "spoon", "fork", "Knife", "cup", "Mixer"};
+        ArrayList<String> kitchen = new ArrayList<>(Arrays.asList(kitchenObjects));
+        System.out.println(kitchen);
+
+        int startsUppercase = 0;
+        int startsLowercase = 0;
+        int hasPp = 0;
+        int startsEndsPp = 0;
+
+
+        for (String element : kitchen) {
+            if(Character.isUpperCase(element.charAt(0))) startsUppercase++;
+            if(Character.isLowerCase(element.charAt(0))) startsLowercase++;
+            if(element.toLowerCase().contains("p")) hasPp++; // why element and not character-> it did not work
+            if(element.toLowerCase().startsWith("p") || element.toLowerCase().endsWith("p")) startsEndsPp++; //   ) ||
+        }
+
+        System.out.println("Elements starts with Uppercase = " + startsUppercase);
+        System.out.println("Elements starts with Lowercase = " + startsLowercase);
+        System.out.println("Elements having P or p = " + hasPp);
+        System.out.println("Elements starting or ending with P or p = " + startsEndsPp);
+
+
+
+
+        System.out.println("\n------Task-10------\n");
+
+        Integer[] data = { 3, 5, 7, 10, 0, 20, 17, 10, 23, 56, 78}; // why wrapper class here
+        ArrayList<Integer> data10 = new ArrayList<>(Arrays.asList(data));
+        System.out.println(data10);
+
+        int dividedBy10 = 0;
+        int evenGreaterThan15 = 0;
+        int oddLessThan20 = 0;
+        int lessThan15GreaterThan20 = 0;
+
+        for (Integer elements : data10) {
+            if(elements % 10 == 0) dividedBy10++;
+            if(elements % 2 == 0 && elements > 15) evenGreaterThan15++;
+            if(elements % 2 == 1 && elements < 20) oddLessThan20++;
+            if(elements < 15 || elements > 50) lessThan15GreaterThan20++;
+        }
+
+
+        System.out.println("Elements that can be divided by 10 = " + dividedBy10);
+        System.out.println("Elements that are even and greater than 15 = " + evenGreaterThan15);
+        System.out.println("Elements that are odd and less than 20 = " + oddLessThan20);
+        System.out.println("Elements that are less than 15 or greater than 50 = " + lessThan15GreaterThan20);
+
     }}
