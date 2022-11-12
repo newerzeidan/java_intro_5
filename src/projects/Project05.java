@@ -54,7 +54,7 @@ public class Project05 {
         int min = Integer.MAX_VALUE; // >
         int max = Integer.MIN_VALUE; // <
 
-        for (int e : numbers1) {
+        for (Integer e : numbers1) {
             if(max < e) max = e;
             if(min > e) min = e;
         }

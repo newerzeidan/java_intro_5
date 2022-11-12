@@ -61,7 +61,7 @@ public class Project04 {
 
         if(string4.length() < 2){
             System.out.println("Invalid input!!!");
-        } else if (string4.length() % 2 == 0) {
+        } else if (string4.length() % 2 == 0) { // middle 2
             System.out.println(string4.substring(string4.length() / 2 - 1, string4.length() /2 + 1));
         }else{
             System.out.println(string4.substring(string4.length() / 2 - 1, string4.length() /2 ));
@@ -116,8 +116,8 @@ public class Project04 {
         String str7= input.nextLine();
 
         for (int i = 0; i < str7.length(); i++) {
-            if(str7.charAt(i) == ' '){ // ?
-                counter += 1;
+            if(str7.charAt(i) == ' '){
+                counter += i;
 
             }
         }
@@ -160,7 +160,7 @@ public class Project04 {
 
         if(word.length() < 1) {
             System.out.println("This word does not have 1 or more characters");
-            for (int i = word.length()-1; i >= 0 ; i--) {
+            for (int i = word.length() -1 ; i >= 0 ; i--) {
                 palindrome += word.charAt(i);
             } if (palindrome.toLowerCase().equals(word.toLowerCase())) {
                 System.out.println("This word is a Palindrome");

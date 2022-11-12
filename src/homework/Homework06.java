@@ -81,9 +81,9 @@ public class Homework06 {
         boolean hasGarfield = false;
         boolean hasFelix = false;
         for(String object : cartoonCats) {
-            if(object.equals("Garfield")){
+            if(object.contains("Garfield")){
                 hasGarfield = true;
-                if(object.equals(("Felix"))){
+                if(object.contains(("Felix"))){
                     hasFelix = true;
                 }
                 break;
@@ -96,8 +96,8 @@ public class Homework06 {
         Double[] numbers2 = {10.5, 20.75, 70.0, 80.0, 15.75}; /// FIX THIS
 
         System.out.println(Arrays.toString(numbers2));
-        for (double elements: numbers2) {
-            System.out.println(elements);
+        for (Double element: numbers2) {
+            System.out.println(element);
         }
 
         System.out.println("\n------Task 8------\n");
@@ -113,8 +113,7 @@ public class Homework06 {
         System.out.println(Arrays.toString(characters));
 
         for (Character character : characters) {
-            if (Character.isLetter(character)){
-                totalLetters++;
+            if (character.isLetter(character)) { totalLetters++;
                 if (Character.isUpperCase(character)) totalUppercase++;
                 else if (Character.isLowerCase(character)) totalLowercase++;
             }
@@ -126,7 +125,6 @@ public class Homework06 {
                 "\nLowercase letters = " + totalLowercase +
                 "\nDigits = " + totalDigits +
                 "\nSpecials characters = " + totalSpecialChars);
-
 
 
 

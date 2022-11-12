@@ -1,55 +1,49 @@
 package homework;
 
-import utilities.ScannerHelper;
-
 import java.util.Scanner;
 
 public class Homework05 {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("==========TASK1==========\n");
 
-
-        System.out.println("\n----- Task-1-----\n");
-
-        String result = "";
+        String answer = "";
 
         for (int i = 1; i <= 100; i++) {
-            if (i % 7 == 0)
-                result += i + " - ";
+            if(i % 7 == 0) answer += i + " - ";
         }
+        System.out.println(answer.substring(0, answer.length()-3));
 
-        System.out.println(result.substring(0, result.length() - 3));
 
+        System.out.println("\n==========TASK2==========\n");
 
-        System.out.println("\n----- Task-2-----\n");
+        answer = "";
 
-        String result1 = "";
         for (int i = 1; i <= 50; i++) {
-            if (i % 6 == 0) result1 += i + " - ";
-
+            if(i % 2 == 0 && i % 3 == 0) answer += i + " - ";
         }
-        System.out.println(result1.substring(0, result1.length() - 3));
+        System.out.println(answer.substring(0, answer.length()-3));
 
 
-        System.out.println("\n----- Task-3-----\n");
+        System.out.println("\n==========TASK3==========\n");
 
-        String result2 = "";
+        answer = "";
 
         for (int i = 100; i >= 50; i--) {
-            if (i % 5 == 0) result2 += i + " - ";
-
+            if(i % 5 == 0) answer += i + " - ";
         }
-        System.out.println(result2.substring(0, result2.length() - 3));
+        System.out.println(answer.substring(0, answer.length()-3));
 
 
-        System.out.println("\n----- Task-4-----\n");
+        System.out.println("\n==========TASK4==========\n");
 
         for (int i = 0; i <= 7; i++) {
-            int square = i * i;
-            System.out.print("\nThe square of " + i + " is " + "= " + square);
-
+            System.out.println("The square of " + i + " is = " + (i*i));
         }
 
-        System.out.println("\n----- Task-5-----\n");
+
+        System.out.println("\n==========TASK5==========\n");
+
         int sum = 0;
         for (int i = 1; i <= 10; i++) {
             sum += i;
@@ -57,83 +51,76 @@ public class Homework05 {
         System.out.println(sum);
 
 
-        System.out.println("\n----- Task-6-----\n");
+        System.out.println("\n==========TASK6==========\n");
 
-        Scanner input = new Scanner(System.in);
+        int num, factorial = 1;
+        System.out.println("Please enter a number");
+        num = scanner.nextInt();
 
-        System.out.println("Hey user please enter a positive number");
-
-        int factorial = 1;
-        int postiveNum = input.nextInt();
-        for (int i = 1; i <= postiveNum; i++) {
+        for (int i = 1; i <= num; i++) {
             factorial *= i;
         }
         System.out.println(factorial);
 
 
-        System.out.println("\n----- Task-7-----\n");
+        System.out.println("\n==========TASK7==========\n");
 
-        String fullName = ScannerHelper.getFullName();
-        int vowel = 0;
+        int counter = 0;
 
-        for (int i = 0; i < fullName.length(); i++) {
-            if (fullName.charAt(i) == 'a' || fullName.charAt(i) == 'e' || fullName.charAt(i) == 'i' ||
-                    fullName.charAt(i) == 'o' || fullName.charAt(i) == 'u' || fullName.charAt(i) == 'A' ||
-                    fullName.charAt(i) == 'E' || fullName.charAt(i) == 'I' || fullName.charAt(i) == 'O'
-                    || fullName.charAt(i) == 'U') ;
-            vowel++;
+        System.out.println("Please enter your full name");
+        scanner.nextLine();
+        String fullname = scanner.nextLine();
+
+        for (int i = 0; i < fullname.length(); i++) {
+            if(fullname.toLowerCase().charAt(i) == 'a'||
+                    fullname.toLowerCase().charAt(i) == 'e'||
+                    fullname.toLowerCase().charAt(i) == 'i'||
+                    fullname.toLowerCase().charAt(i) == 'o'||
+                    fullname.toLowerCase().charAt(i) == 'u') counter++;
         }
-        System.out.println("There are " + vowel + " vowels letters in this full name");
+        System.out.println("There are " + counter + " vowel letters in this full name");
 
 
-        System.out.println("\n----- Task-8-----\n");
+        System.out.println("\n==========TASK8==========\n");
 
-        int num = ScannerHelper.getANumber();
-        int sumTotal = 0;
+        sum = 0;
+        counter = 0;
 
         do {
-            System.out.println("Please enter a number: ");
-            num = input.nextInt();
-            if (num >= 100) {
-                System.out.println("The number is more then or equal to 100");
+            System.out.println("Please enter a number");
+            sum += scanner.nextInt();
+            counter++;
+        }while(sum < 100);
 
-                break;
-            } else {
-                sumTotal += num;
-                if (sumTotal >= 100) System.out.println("Sum of entered numbers is at least 100");
-            }
+        if (counter == 1) System.out.println("This number is already more than 100");
+        else System.out.println("Sum of the entered numbers is at least 100");
 
+
+        System.out.println("\n==========TASK9==========\n");
+
+        int prevNum, nextNum = 1, numCurrent = 0;
+        answer = "";
+
+        num =scanner.nextInt();
+
+        for (int i = 0; i < num; i++) {
+            answer += numCurrent + " - ";
+
+            prevNum = numCurrent;
+            numCurrent = nextNum;
+            nextNum = prevNum + numCurrent;
         }
-        while (num < 100);
-        if (sumTotal >= 100) System.out.println("Sum of the numbers is at least 100");
+        System.out.println(answer.substring(0, answer.length()-3));
 
 
-        System.out.println("\n-----Task 9-----\n");
+        System.out.println("\n==========TASK10==========\n");
+        scanner.nextLine();
+        String name;
 
-        int first = 0;
-        int second = 1;
-        String resultFib = "";
+        do {
+            System.out.println("Please enter a name");
+            name = scanner.nextLine();
+        }while(name.toLowerCase().charAt(0) != 'j');
 
-        System.out.println("Hey User, please enter a number: ");
-        int numFibonacci = input.nextInt();
-        input.nextLine(); // scanner bug
-
-        for (int i = 0; i < numFibonacci; i++) {
-            resultFib += first + " - ";
-            int sumOfFirstAndSecond = first + second;
-            first = second;
-            second = sumOfFirstAndSecond;
-        }
-
-        System.out.println(resultFib.substring(0, resultFib.length() - 3));
-
-
-        System.out.println("\n-----Task 10-----\n");
-        String fName = ScannerHelper.getAName().toLowerCase();
-
-        while (fName.charAt(0) != 'j') {
-            fName = ScannerHelper.getAName().toLowerCase();
-        }
-
-        System.out.println("End of the program");
-    }}   
+    }
+}
