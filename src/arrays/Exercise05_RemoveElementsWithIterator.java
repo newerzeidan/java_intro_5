@@ -19,7 +19,7 @@ public class Exercise05_RemoveElementsWithIterator {
         Remove elements that contains "book"
         -This is case-insensitive
 
-        Print the lise -> [Pen, Pencil]
+        Print the line -> [Pen, Pencil]
          */
 
         Iterator<String> objectsIterator = objects.iterator();
