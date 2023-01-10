@@ -4,127 +4,112 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Homework13 {
-    public static void main(String[] args) {
-        System.out.println("---Task 1---");
-        String s = "JAVA";
-        System.out.println(hasLowerCase(s));
-
-        System.out.println("\n---Task 2---");
-        ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(0, 1, 10));
-        System.out.println(noZero(nums));
-
-        System.out.println("\n---Task 3---");
-        int[] squares = {1, 2, 3};
-        System.out.println(Arrays.deepToString(numberAndSquare(squares)));
-
-        System.out.println("\n---Task 4---");
-        String[] words = {"abc", "foo", "java"};
-        String str = "hello";
-        System.out.println(containsValue(words,str));
-
-        System.out.println("\n--- Task 5---");
-        String reverse = "Java is fun";
-        System.out.println(reverseSentence(reverse));
-
-        System.out.println("\n---Task 6---");
-        String remove = "Selenium";
-        System.out.println(removeStringSpecialDigits(remove));
-
-        System.out.println("\n---Task 7---");
-        String[] removeArray = {"Java", "#$%is", "fun"};
-        System.out.println(Arrays.toString(removeArraySpecialDigits(removeArray)));
-
-        System.out.println("\n---Task 8---");
-        ArrayList<String> array1 = new ArrayList<>(Arrays.asList("Java", "is", "fun"));
-        ArrayList<String> array2 = new ArrayList<>(Arrays.asList("Java", "C#", "Python"));
-        System.out.println(removeAndReturnCommons(array1, array2));
-
-        System.out.println("\n---Task 9---");
-        ArrayList<String> removingX = new ArrayList<>(Arrays.asList("xyz", "123", "#$%"));
-        System.out.println(noXinVariables(removingX));
+    //////////////////////TASK1
+    public static boolean hasLowerCase(String str){
+        return !str.replaceAll("[^a-z]", "").isEmpty();
     }
-
-
-    // Task 1
-    public static Boolean hasLowerCase(String s){
-        for (int i = 0; i < s.length(); i++) {
-            if(Character.isLowerCase(s.charAt(i))) return true;
-        }
-        return false;
-    }
-
-    //Task 2
-    public static ArrayList<Integer> noZero(ArrayList<Integer> nums){
-        nums.removeIf(i -> i == 0);
-        return nums;
-    }
-
-    //Task 3
-    public static int[][] numberAndSquare(int[] nums){
-        int[][] squares = new int[nums.length][2];
-        for (int i = 0; i < nums.length; i++) {
-            squares[i][0] = nums[i];
-            squares[i][1] = nums[i] * nums[i];
-        }
-        return squares;
-    }
-
-    //Task 4
-    public static Boolean containsValue(String[] strs, String str){
-        return new ArrayList<String>(Arrays.asList(strs)).contains(str);
-    }
-
-    //Task 5
-    public static String reverseSentence(String s){
-        String[] split = s.split(" ");
-        if(split.length < 2) return "There is not enough words!";
-        split[split.length - 1] = split[split.length - 1].substring(0,1).toUpperCase() + split[split.length - 1].substring(1);
-        split[0] = split[0].toLowerCase();
-        String str = "";
-        for (int i = split.length - 1; i >= 0; i--){
-            str += " " + split[i];
-        }
-        return str.substring(1);
-    }
-
-    //Task 6
-    public static String removeStringSpecialDigits(String s){
-        String str = "";
-        for (int i = 0; i < s.length(); i++) {
-            if(s.charAt(i) == ' ' || Character.isLetterOrDigit(s.charAt(i))) str += s.charAt(i);
-        } return str;
-    }
-
-    //Task 7
-    public static String[] removeArraySpecialDigits(String[] strings){
-        String[] removed = new String[strings.length];
-        for (int i = 0; i < strings.length; i++) {
-            removed[i] = "";
-            for (int j = 0; j < strings[i].length(); j++) {
-                if(strings[i].charAt(j) == ' ' | Character.isLetterOrDigit(strings[i].charAt(j))) removed[i] += strings[i].charAt(j);
+    //////////////////////TASK2
+    public static ArrayList<Integer> noZero(ArrayList<Integer> arr){
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i) == 0) {
+                arr.remove(i);
+                i--;
             }
-        } return removed;
+
+        }
+        return  arr;
     }
 
-    //Task 8
-    public static ArrayList<String> removeAndReturnCommons(ArrayList<String> s1, ArrayList<String> s2){
-        s1.retainAll(s2);
-        return s1;
+    //////////////////////TASK3
+    public static int[][] numberAndSquare(int[] arr){
+        int[][] arr2D = new int[arr.length][2];
+        for (int i = 0; i < arr.length; i++) {
+            arr2D[i][0] = arr[i];
+            arr2D[i][1] = arr[i] * arr[i];
+        }
+        return arr2D;
+    }
+    //////////////////////TASK4
+    public static boolean containsValue(String str, String[] arr){
+        return Arrays.asList(arr).contains(str);
     }
 
-    //Task 9
-    public static ArrayList<String> noXinVariables(ArrayList<String> strings){
-        ArrayList<String> modifiedStrings = new ArrayList<>();
-        for (String string : strings) {
-            StringBuilder s = new StringBuilder(string);
-            for (int i = 0; i < s.length(); i++) {
-                if(s.charAt(i) == 'x' | s.charAt(i) == 'X') {
-                    s.deleteCharAt(i);
-                    i--;
+    //////////////////////TASK5
+    public static String reverseSentence(String str){
+        String reversedSent = "";
+        String[] arr = str.toLowerCase().split(" ");
+        if(arr.length < 2) return "There is not enough words!";
+        for (int i = arr.length-1; i >= 0; i--) {
+            reversedSent += arr[i] + " ";
+        }
+        return reversedSent.substring(0,1).toUpperCase() + reversedSent.substring(1, reversedSent.length()-1);
+    }
+
+    //////////////////////TASK6
+    public static String removeStringSpecialsDigits(String str){
+        return str.replaceAll("[^a-zA-Z ]", "");
+    }
+
+    //////////////////////TASK7
+    public static ArrayList<String> removeArraySpecialsDigits(ArrayList<String> arr){
+        for (int i = 0; i < arr.size(); i++) {
+            arr.set(i, arr.get(i).replaceAll("[^a-zA-Z]", ""));
+        }
+        return arr;
+    }
+
+
+    //////////////////////TASK8
+    public static ArrayList<String> removeAndReturnCommons(ArrayList<String> arr1, ArrayList<String> arr2){
+        ArrayList<String> newArr = new ArrayList<>();
+        for (String s1 : arr1) {
+            for (String s2 : arr2) {
+                if(s1.equals(s2) && !newArr.contains(s1)) {
+                    newArr.add(s1);
+                    break;
                 }
             }
-            modifiedStrings.add(s.toString());
-        } modifiedStrings.removeIf(String::isEmpty);
-        return modifiedStrings;
+        }
+        return newArr;
+    }
+
+    //////////////////////TASK9
+    public static ArrayList<String> noXInVariables(ArrayList<String> arr){
+        for (int i = 0; i < arr.size(); i++) {
+            if (arr.get(i).replaceAll("[xX]", "").equals("")){
+                arr.remove(i);
+                i--;
+            } else arr.set(i, arr.get(i).replaceAll("[xX]",""));
+        }
+        return arr;
+    }
+    public static void main(String[] args) {
+        System.out.println("================TASK9===============\n");
+        System.out.println(noXInVariables(new ArrayList<String>(Arrays.asList("xxxx", "xxxx", "xxxx"))));
+
+        System.out.println("\n================TASK8===============\n");
+        System.out.println(removeAndReturnCommons(new ArrayList<String>(Arrays.asList("Java", "is", "fun")),
+                new ArrayList<String>(Arrays.asList("Java", "xxxdx", "xxsxx"))));
+
+        System.out.println("\n================TASK7===============\n");
+        System.out.println(removeArraySpecialsDigits(new ArrayList<String>(Arrays.asList("123", "456", "sfdgs4556"))));
+
+        System.out.println("\n================TASK6===============\n");
+        System.out.println(removeStringSpecialsDigits("Ja435v3&a( 43&i(05s736 6488fu:)n"));
+
+        System.out.println("\n================TASK5===============\n");
+        System.out.println(reverseSentence("Hello"));
+
+        System.out.println("\n================TASK4===============\n");
+        System.out.println(containsValue("hello", new String[]{"xyz", "123", "helelo"}));
+
+        System.out.println("\n================TASK3===============\n");
+        System.out.println(Arrays.deepToString(numberAndSquare(new int[]{0, 1, 2, 3, 4, 5})));
+
+        System.out.println("\n================TASK2===============\n");
+        System.out.println(noZero(new ArrayList<Integer>(Arrays.asList(0, 1,20,3,4,0,5))));
+
+        System.out.println("\n================TASK1===============\n");
+        System.out.println(hasLowerCase(""));
     }
 }
